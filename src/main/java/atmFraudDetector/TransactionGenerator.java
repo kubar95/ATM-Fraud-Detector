@@ -1,10 +1,10 @@
 package atmFraudDetector;
 
-import java.awt.List;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class TransactionGenerator {
@@ -15,7 +15,7 @@ public class TransactionGenerator {
 	private int hourTo;
 	private int atmNumberFrom;
 	private int atmNumberTo;
-	private ArrayList<Transaction> transactions;
+	private List<Transaction> transactions;
 	
 	public TransactionGenerator(int transactionNumber, int cardNumberFrom, int cardNumberTo, int hourFrom, int hourTo,
 			int atmNumberFrom, int atmNumberTo) {
@@ -31,7 +31,7 @@ public class TransactionGenerator {
 	}
 	
 	
-	public ArrayList<Transaction> getTransactionList() {
+	public List<Transaction> getTransactionList() {
 		return transactions;
 	}
 	private void generateTransactionsList() {

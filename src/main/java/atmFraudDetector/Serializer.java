@@ -7,21 +7,21 @@ import java.io.*;
 import java.lang.reflect.Type;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
-public class Serializer {
+public abstract class Serializer {
 
     public static void writeGsonToFile(String gsonObject, String filePath) throws IOException {
         FileWriter writer = new FileWriter(filePath);
         writer.write(gsonObject);
         writer.close();
     }
-    public static ArrayList<Transaction> readGsonFromFile(String filePath) throws IOException {
+    public static List<Transaction> readGsonFromFile(String filePath) throws IOException {
         Gson gson = new Gson();
-        ArrayList<Transaction> transactions = new ArrayList<>();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
         Type collectionType = new TypeToken<ArrayList<Transaction>>(){}.getType();
-        transactions = gson.fromJson(bufferedReader, collectionType);
+        List<Transaction> transactions = gson.fromJson(bufferedReader, collectionType);
         return  transactions;
     }
 }

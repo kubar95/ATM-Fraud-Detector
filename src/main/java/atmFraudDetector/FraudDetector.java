@@ -10,14 +10,13 @@ import java.util.stream.Collectors;
 
 public class FraudDetector {
 	private final Duration MINUTE = Duration.ofMinutes(1);
-	private ArrayList<Transaction> transactions;
+	private List<Transaction> transactions;
 
-	public FraudDetector(ArrayList<Transaction> transactions) {
+	public FraudDetector(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
 
 	public List<Transaction> detectFraud() {
-		long timeStart = System.currentTimeMillis();
 		List<Transaction> fradulentTransactions = transactions.parallelStream()
 				.collect(Collectors.groupingBy(Transaction::getCardNumber))
 				.values()
@@ -30,9 +29,9 @@ public class FraudDetector {
 				.filter(list -> list.size() > 0)
 				.flatMap(Collection::stream)
 				.collect(Collectors.toList());
-		long timeStop = System.currentTimeMillis();
 		return  fradulentTransactions;
 	}
+
 	private List<Transaction> removeNotFraudulentTransactions(List<Transaction> transactions) {
 		boolean isFradulent = true;
 		Transaction transactionBefore;

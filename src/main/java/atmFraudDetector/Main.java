@@ -19,7 +19,7 @@ public class Main {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-		ArrayList<Transaction> tractionsFromJson = new ArrayList<>();
+		List<Transaction> tractionsFromJson = new ArrayList<>();
 		try {
 			tractionsFromJson= Serializer.readGsonFromFile("transactions.json");
 		} catch (IOException e) {
