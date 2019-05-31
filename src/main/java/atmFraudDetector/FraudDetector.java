@@ -19,15 +19,17 @@ public class FraudDetector {
 	public List<Transaction> detectFraud() {
 		long timeStart = System.currentTimeMillis();
 		List<Transaction> fradulentTransactions = transactions.parallelStream()
-				.collect(Collectors.groupingByConcurrent(Transaction::getCardNumber))
-				.values().parallelStream()
+				.collect(Collectors.groupingBy(Transaction::getCardNumber))
+				.values()
+				.parallelStream()
 				.filter(list -> list.size() > 1)
 				.map(list -> list.stream()
 						.sorted(Comparator.comparing(Transaction::getTime))
 						.collect(Collectors.toList()))
 				.map(list -> removeNotFraudulentTransactions(list))
 				.filter(list -> list.size() > 0)
-				.flatMap(Collection::stream).collect(Collectors.toList());
+				.flatMap(Collection::stream)
+				.collect(Collectors.toList());
 		long timeStop = System.currentTimeMillis();
 		return  fradulentTransactions;
 	}
@@ -76,14 +78,7 @@ public class FraudDetector {
 
 	private boolean isBetweenMinute(LocalDateTime time1, LocalDateTime time2) {
 		Duration durationBetweenTwoTransactions = Duration.between(time1, time2);
-		return compareHandler(MINUTE.compareTo(durationBetweenTwoTransactions));
-	}
-
-	private boolean compareHandler(int compareResoult) {
-		if (compareResoult == 1) {
-			return true;
-		} else
-			return false;
+		return MINUTE.compareTo(durationBetweenTwoTransactions) == 1;
 	}
 
 	private boolean isAtmTheSame(int atm1, int atm2) {

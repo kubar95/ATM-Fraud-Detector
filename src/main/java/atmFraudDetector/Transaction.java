@@ -3,7 +3,7 @@ package atmFraudDetector;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Transaction implements Serializable{
+public class Transaction {
 	private int cardNumber;
 	private int atmNumber;
 	private LocalDateTime transactionDataTime;
@@ -14,9 +14,6 @@ public class Transaction implements Serializable{
 	}
 	public int getCardNumber() {
 		return cardNumber;
-	}
-	public void setCardNumber(int cardNumber) {
-		this.cardNumber = cardNumber;
 	}
 	public int getAtmNumber() {
 		return atmNumber;
