@@ -14,8 +14,8 @@ java -jar atmFraudDetector/target/app-1.0-SNAPSHOT-exec.jar ?
 
 ## Built With
 
-* [JAVA 8](https://docs.oracle.com/javase/8/docs/api/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
+* [JAVA 8](https://docs.oracle.com/javase/8/docs/api/) 
+* [Maven](https://maven.apache.org/) 
 
 
 
