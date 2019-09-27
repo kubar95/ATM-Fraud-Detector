@@ -8,7 +8,7 @@ Trasaction's time is compared, using java streams. If the time between two is le
 
 ```
 mvn clean install
-java -jar atmFraudDetector/target/app-1.0-SNAPSHOT-exec.jar ?
+java -jar atmFraudDetector/target/app-1.0-SNAPSHOT-exec.jar
 
 ```
 
